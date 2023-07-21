@@ -50,7 +50,7 @@ class salesController extends Controller
          return response('購入できませんでした',400);
       }
       
-     
+     return view('detail');
    
       
       
