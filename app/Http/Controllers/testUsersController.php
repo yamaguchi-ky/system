@@ -133,4 +133,44 @@ class testUsersController extends Controller
         return redirect(route('list'));
       
     }
+
+    public function search($keyword){
+
+        $test_users = testUsers::
+         where('product_name','like','%'.$keyword.'%')
+        //2の上限
+        /*->where('price','<=',50)
+        ->where('stock','<=',5)*/
+        ->get();
+
+        return response()->json([
+            'result'    => $test_users,
+        ]);
+
+
+
+    }
+        public function destroy(Request $request) {
+
+            DB::beginTransaction();
+            try{
+            $user = testUsers::findOrFail($request->id);
+
+            $user->delete();
+            DB::commit();
+            }
+            catch(\Throwable $e){
+            abort(500);
+            }
+       
+    }
+
+    public function sort($name,$sort){
+        $test_users = testUsers::orderBy($name,$sort)->get();
+        return response()->json([
+            'result'    => $test_users,
+        ]);
+
+   
+    }
 }
