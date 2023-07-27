@@ -139,8 +139,8 @@ class testUsersController extends Controller
         $test_users = testUsers::
          where('product_name','like','%'.$keyword.'%')
         //2の上限
-        /*->where('price','<=',50)
-        ->where('stock','<=',5)*/
+        ->where('price','<=',50)
+        ->where('stock','<=',5)
         ->get();
 
         return response()->json([
