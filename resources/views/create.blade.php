@@ -8,7 +8,7 @@
 </head>
 <body>
    <h2>商品登録画面</h2>
-    <form method = "post" action="{{route'store' }}" enctype="multipart/form-data">
+    <form method = "post" action="{{route('store') }}" enctype="multipart/form-data">
     @csrf
 
     <span>会社名:</span>
